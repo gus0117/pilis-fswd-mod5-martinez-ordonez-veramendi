@@ -1,15 +1,50 @@
 import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { EventListScreen } from './EventListScreen'
-import { EventDetailScreen } from '../event-detail/EventDetailScreen'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Ionicons } from '@expo/vector-icons'
+import { HomeScreen } from '../home/HomeScreen'
+import { LoginScreen } from '../login/LoginScreen'
+import { COLORS, SPACING } from '../../utils/theme'
+import { StyleSheet } from 'react-native'
 
-const EventListStack = createNativeStackNavigator()
-export const EventStackScreen = () => {
+const Tab = createBottomTabNavigator()
+
+const TAB_ICON = {
+  Home: 'home',
+  Profile: 'person',
+  Explorar: 'search'
+}
+
+const screenOptions = ({ route }) => {
+    const iconName = TAB_ICON[route.name]// TAB_ICON[Home]
+    return {
+      tabBarIcon: ({ size, color }) => (
+        <Ionicons name={iconName} size={size} color={color} />
+      ),
+      tabBarActiveTintColor: COLORS.primary,
+      tabBarInactiveTintColor: COLORS.inactive,
+      headerShown: false,
+      tabBarStyle: styles.tabBar
+  
+    }
+  }
+
+export const MainStackScreen = () => {
   return (
-    <EventListStack.Navigator screenOptions={{headerShow: false}}>
-        <EventListStack.Screen name='ExplorarLista' component={EventListScreen} />
-        <EventListStack.Screen name='Detalle' component={EventDetailScreen}/>
-    </EventListStack.Navigator>
+    <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Screen name='Home' options={{ title: 'Inicio' }} component={ HomeScreen } />
+        <Tab.Screen name='Explorar' options={{ title: 'Explorar' }}  component={ EventListScreen } />
+        <Tab.Screen name='Profile' options={{ title: 'Perfil' }} component={ LoginScreen } />
+    </Tab.Navigator>
 
   )
 }
+
+const styles = StyleSheet.create({
+    tabBar: {
+      height: SPACING.xxxl,
+      paddingBottom: SPACING.xs,
+      paddingTop: SPACING.xs
+    }
+  })
+  
