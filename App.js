@@ -13,8 +13,8 @@ export default function App () {
     <>
       <NavigationContainer>
         <EventListStack.Navigator screenOptions={{ headerShown: false }}>
-          <EventListStack.Screen name='Principal' component={ MainStackScreen } />
-          <EventListStack.Screen name='Detalle' component={ EventDetailScreen } />
+          <EventListStack.Screen name='Main' component={ MainStackScreen } />
+          <EventListStack.Screen name='EventDetail' component={ EventDetailScreen } />
         </EventListStack.Navigator>
       </NavigationContainer>
       <StatusBar style='auto' />
