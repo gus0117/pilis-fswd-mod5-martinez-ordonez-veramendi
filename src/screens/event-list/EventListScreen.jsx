@@ -4,9 +4,9 @@ import { styles } from './EventListScreen.styles'
 import { data } from '../../api/data'
 
 
-export const EventListScreen = () => {
-  const location = ({ item }) => (
-    <Pressable onPress={() => console.warn(`Elemento: ${item.title}`)}>
+export const EventListScreen = ({navigation}) => {
+  const festival = ({ item }) => (
+    <Pressable onPress={() => navigation.navigate('Detalle', {item})}>
       <View style={styles.itemContainer}>
         <Image source={item.images[0]} style={styles.itemImage} />
         <Text style={styles.itemTitle}>{item.title}</Text>
@@ -18,7 +18,7 @@ export const EventListScreen = () => {
     <SafeAreaView style={styles.container}>
       <FlatList
         data={data}
-        renderItem={location}
+        renderItem={festival}
         keyExtractor={item => item.id}
         style={styles.itemList}
       />

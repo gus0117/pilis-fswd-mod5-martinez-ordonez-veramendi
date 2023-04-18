@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen } from './src/screens/home/HomeScreen'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS, SPACING } from './src/utils/theme'
-import { EventListScreen } from './src/screens/event-list/EventListScreen'
+import { EventStackScreen } from './src/screens/event-list/EventStackScreen'
 
 const Tab = createBottomTabNavigator()
 
@@ -34,7 +34,7 @@ export default function App () {
       <NavigationContainer>
         <Tab.Navigator screenOptions={screenOptions}>
           <Tab.Screen name='Home' component={HomeScreen} />
-          <Tab.Screen name='Explorar' component={ EventListScreen } />
+          <Tab.Screen name='Explorar' component={ EventStackScreen } />
         </Tab.Navigator>
       </NavigationContainer>
       <StatusBar style='auto' />

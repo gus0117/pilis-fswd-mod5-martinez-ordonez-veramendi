@@ -1,4 +1,4 @@
-export const data= [
+export const data = [
     {
       id: "1",
       title: "Paseo de las Plantas",
@@ -20,14 +20,10 @@ export const data= [
     {
       id: "2",
       title: "2º Concurso del Asado de Cordero a la Estaca- Santa Ana",
-      location: "Av. 19 de Abril entre Otero y Canonigo Gorriti, San Salvador de Jujuy",
-      description: "Todos los sábados del mes de abril se podra disfrutar del paseo de las plantas donde encontrará gran varidad de plantines de estación.",
-      time: "9 a 15 hs.",
-      date: "08/04/2023",
       images: [
         require('../../assets/images/concurso-santa-ana-1.jpg'),
         require('../../assets/images/concurso-santa-ana-2.png'),
-        require('../../assets/images/concurso-santa-ana-3.jpg')
+        require('../../assets/images/concurso-santa-ana-3.jpg'),
       ],
       "locationCoordinates": {
         "latitude": -23.315999283129017,
