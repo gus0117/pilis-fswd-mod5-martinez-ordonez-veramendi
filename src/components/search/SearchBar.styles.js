@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.inactive,
     borderRadius: 20,
     margin: 10,
     paddingVertical: 5,

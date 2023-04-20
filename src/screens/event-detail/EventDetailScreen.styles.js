@@ -4,7 +4,7 @@ import { COLORS, FONT_SIZE } from '../../utils/theme'
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.primary,
     marginTop: StatusBar.currentHeight
   },
   imageContainer: {
@@ -20,16 +20,17 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: COLORS.secondaty,
     marginBottom: 10
   },
   location: {
     fontSize: 18,
-    color: '#666',
+    color: COLORS.inactive,
     marginBottom: 5
   },
-  price: {
-    fontSize: 20,
-    color: '#444',
+  date: {
+    fontSize: 18,
+    color: COLORS.inactive,
     marginBottom: 5
   },
   ratingContainer: {
@@ -38,11 +39,12 @@ export const styles = StyleSheet.create({
   },
   rating: {
     marginLeft: 8,
-    color: COLORS.text,
+    color: COLORS.blueSky,
     fontSize: FONT_SIZE.md
   },
   description: {
     fontSize: 18,
+    color: COLORS.inactive,
     lineHeight: 26,
     marginTop: 10
   },

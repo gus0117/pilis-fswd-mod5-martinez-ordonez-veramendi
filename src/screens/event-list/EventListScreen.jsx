@@ -4,6 +4,7 @@ import { styles } from './EventListScreen.styles'
 import { SearchBar } from '../../components/search/SearchBar'
 import { getEvents } from '../../api/service'
 
+
 export const EventListScreen = ({navigation}) => {
 
   const [searchQuery, setSearchQuery] = useState('')
@@ -27,11 +28,13 @@ export const EventListScreen = ({navigation}) => {
     <Pressable onPress={() => navigation.navigate('EventDetail', {item})}>
       <View style={styles.itemContainer}>
         <Image source={{ uri: `https://drive.google.com/uc?id=${item.images[0]}` }} style={styles.itemImage} />
+      </ View >
+      <View style={styles.titleBox}>
         <Text style={styles.itemTitle}>{item.title}</Text>
-        <Text style={styles.itemPrice}>{item.date}</Text>
       </View>
     </Pressable>
   )
+  
   return (
     <SafeAreaView style={styles.container}>
        <SearchBar handleSearch={handleSearch} searchQuery={searchQuery} />
