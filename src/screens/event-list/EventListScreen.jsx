@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, SafeAreaView, FlatList, Pressable, Image } from 'react-native'
+import { View, Text, SafeAreaView, FlatList, Pressable, Image, ActivityIndicator } from 'react-native'
 import { styles } from './EventListScreen.styles'
 import { SearchBar } from '../../components/search/SearchBar'
 import { getEvents } from '../../api/service'
+import { Loading } from '../../components/loading'
 
 
 export const EventListScreen = ({navigation}) => {
 
   const [searchQuery, setSearchQuery] = useState('')
   const [eventList, setEventList] = useState([])
+  const [loadingState, setLoadingState] = useState(true)
+
   const handleSearch = (query) => {
     setSearchQuery(query)
   }
@@ -19,6 +22,7 @@ export const EventListScreen = ({navigation}) => {
   useEffect(() => {
     getEvents().then(datas => {
       setEventList(datas)
+      setLoadingState(false)
     }).catch(err => console.log(err))
   }, [])
   
@@ -36,13 +40,18 @@ export const EventListScreen = ({navigation}) => {
   
   return (
     <SafeAreaView style={styles.container}>
+      { loadingState?
+       <Loading />:
+       <>
        <SearchBar handleSearch={handleSearch} searchQuery={searchQuery} />
-      <FlatList
+       <FlatList
         data={filteredEvents }
         renderItem={festival}
         keyExtractor={item => item.id}
         style={styles.itemList}
-      />
+        />
+       </>
+     }
     </SafeAreaView>
   )
 }
