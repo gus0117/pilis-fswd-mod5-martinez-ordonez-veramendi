@@ -7,6 +7,7 @@ import { LoginScreen } from '../login/LoginScreen'
 import { COLORS, SPACING } from '../../utils/theme'
 import { StyleSheet } from 'react-native'
 
+
 const Tab = createBottomTabNavigator()
 
 const TAB_ICON = {
@@ -24,7 +25,7 @@ const screenOptions = ({ route }) => {
       tabBarActiveTintColor:'#ed589b',
       tabBarInactiveTintColor: '#fca7cd',
       headerShown: false,
-      borderTopColor: '#fce3ef',
+      borderTopColor: 'transparent',
       tabBarStyle: styles.tabBar
   
     }

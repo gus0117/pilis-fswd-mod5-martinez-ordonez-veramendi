@@ -9,7 +9,6 @@ export const EventListScreen = ({navigation}) => {
 
   const [searchQuery, setSearchQuery] = useState('')
   const [eventList, setEventList] = useState([])
-
   const handleSearch = (query) => {
     setSearchQuery(query)
   }
