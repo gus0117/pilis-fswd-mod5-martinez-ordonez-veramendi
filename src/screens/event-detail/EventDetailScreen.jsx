@@ -16,6 +16,7 @@ export const EventDetailScreen = ({ route }) => {
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.location}>{item.location}</Text>
         <Text style={styles.date}>{item.date}</Text>
+        <Text style={styles.date}>{item.time}</Text>
         <View style={styles.ratingContainer}>
           <Ionicons name='star' size={20} color={COLORS.secondaty} />
           <Text style={styles.rating}>{item.rating}</Text>
