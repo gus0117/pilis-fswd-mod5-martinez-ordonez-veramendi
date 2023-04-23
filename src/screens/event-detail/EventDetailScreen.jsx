@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Image, Text } from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import { styles } from './EventDetailScreen.styles'
 import { Ionicons } from '@expo/vector-icons'
@@ -20,7 +20,7 @@ export const EventDetailScreen = ({ route }) => {
           <Ionicons name='star' size={20} color={COLORS.secondaty} />
           <Text style={styles.rating}>{item.rating}</Text>
         </View>
-        
+
         <Text style={styles.description}>{item.description}</Text>
       </View>
       <MapView
