@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './LoginScreen.styles'
 import { getUsers } from '../../api/user.service'
 import { UserContext } from '../../contexts/UserContext'
 import { useForm, Controller } from 'react-hook-form'
+import { useNavigation } from '@react-navigation/native'
 
 export const LoginScreen = () => {
+  const navigation = useNavigation()
   const [isUserIncorrect, setIsUserIncorrect] = useState(false)
   const { setCurrentUser } = useContext(UserContext)
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -21,7 +23,7 @@ export const LoginScreen = () => {
         const user = users[0]
         if(username == user.user && password === user.password){
           setCurrentUser({ username, password })
-          NavigationPreloadManager.navigate('Home')
+          navigation.navigate('Home')
           setIsUserIncorrect(false)
         }
         else{
