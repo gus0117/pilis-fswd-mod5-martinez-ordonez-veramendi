@@ -6,6 +6,7 @@ import { UserContext } from '../../contexts/UserContext'
 import { useForm, Controller } from 'react-hook-form'
 
 export const LoginScreen = () => {
+  const [isUserIncorrect, setIsUserIncorrect] = useState(false)
   const { setCurrentUser } = useContext(UserContext)
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -20,10 +21,11 @@ export const LoginScreen = () => {
         const user = users[0]
         if(username == user.user && password === user.password){
           setCurrentUser({ username, password })
-          console.log("Logueado correctamente")
+          NavigationPreloadManager.navigate('Home')
+          setIsUserIncorrect(false)
         }
-        else {
-          console.log("Datos incorrectos")
+        else{
+          setIsUserIncorrect(true)
         }
       })
       .catch(err => console.warn(err))
@@ -31,7 +33,7 @@ export const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Inicio de Sesión</Text>
+      <Text style={styles.title}>Inicio de Sesión</Text>
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
@@ -47,6 +49,7 @@ export const LoginScreen = () => {
         name='username'
         rules={{ required: 'El nombre de usuario es requerido' }}
       />
+      {isUserIncorrect && <Text style={styles.errorText}>Datos Incorrectos</Text>}
       {errors.username && <Text style={styles.errorText}>{errors.username.message}</Text>}
       <Controller
         control={control}
