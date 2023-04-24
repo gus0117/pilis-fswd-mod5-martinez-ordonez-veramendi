@@ -1,17 +1,17 @@
-import * as React from "react";
-import { StyleSheet, View, ScrollView, Dimensions, Image } from "react-native";
+import * as React from 'react'
+import { StyleSheet, View, ScrollView, Dimensions, Image } from 'react-native'
 
-const DEVICE_WIDTH = Dimensions.get("window").width;
+const DEVICE_WIDTH = Dimensions.get('window').width
 
 class CarouselImage extends React.Component {
-  scrollRef = React.createRef();
-  constructor(props) {
-    super(props);
+  scrollRef = React.createRef()
+  constructor (props) {
+    super(props)
 
     this.state = {
       selectedIndex: 0
-    };
-    this.scrollRef = React.createRef();
+    }
+    this.scrollRef = React.createRef()
   }
 
   componentDidMount = () => {
@@ -28,24 +28,24 @@ class CarouselImage extends React.Component {
             animated: true,
             x: DEVICE_WIDTH * this.state.selectedIndex,
             y: 0
-          });
+          })
         }
-      );
-    }, 3500);
-  };
+      )
+    }, 3500)
+  }
 
   setSelectedIndex = event => {
-    const contentOffset = event.nativeEvent.contentOffset;
-    const viewSize = event.nativeEvent.layoutMeasurement;
+    const contentOffset = event.nativeEvent.contentOffset
+    const viewSize = event.nativeEvent.layoutMeasurement
 
-    const selectedIndex = Math.floor(contentOffset.x / viewSize.width);
-    this.setState({ selectedIndex });
-  };
+    const selectedIndex = Math.floor(contentOffset.x / viewSize.width)
+    this.setState({ selectedIndex })
+  }
 
-  render() {
-    const { images } = this.props;
+  render () {
+    const { images } = this.props
     return (
-      <View style={{ height: "100%", width: "100%" }}>
+      <View style={{ height: '100%', width: '100%' }}>
         <ScrollView
           horizontal
           pagingEnabled
@@ -61,15 +61,15 @@ class CarouselImage extends React.Component {
           ))}
         </ScrollView>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: "100%",
-    width: Dimensions.get("window").width,
+    height: '100%',
+    width: Dimensions.get('window').width
   }
-});
+})
 
-export { CarouselImage };
+export { CarouselImage }

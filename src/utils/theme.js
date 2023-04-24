@@ -25,4 +25,3 @@ export const FONT_SIZE = {
   xxl: 48,
   xxxl: 64
 }
-

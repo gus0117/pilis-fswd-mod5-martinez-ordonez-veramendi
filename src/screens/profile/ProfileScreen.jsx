@@ -4,14 +4,13 @@ import { UserInfoScreen } from '../user/UserInfoScreen'
 import { LoginScreen } from '../login/LoginScreen'
 
 export const ProfileScreen = () => {
-    const { currentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
 
-    return (
-        <>
-            {currentUser ?
-                <UserInfoScreen /> :
-                <LoginScreen /> 
-            }
-        </>
-    )
+  return (
+    <>
+      {currentUser
+        ? <UserInfoScreen />
+        : <LoginScreen />}
+    </>
+  )
 }

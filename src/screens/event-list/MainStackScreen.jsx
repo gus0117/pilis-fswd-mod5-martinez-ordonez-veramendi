@@ -1,7 +1,6 @@
 import React from 'react'
 import { EventListScreen } from './EventListScreen'
 import { HomeScreen } from '../home/HomeScreen'
-import { LoginScreen } from '../login/LoginScreen'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { StyleSheet } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
@@ -22,7 +21,7 @@ const screenOptions = ({ route }) => {
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={iconName} size={size} color={color} />
     ),
-    tabBarActiveTintColor: COLORS.primary,
+    tabBarActiveTintColor: COLORS.secondaty,
     tabBarInactiveTintColor: COLORS.inactive,
     headerShown: false,
     tabBarStyle: styles.tabBar
@@ -41,7 +40,8 @@ export const MainStackScreen = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    heiight: SPACING.xxxl,
+    height: SPACING.xxxl,
+    backgroundColor: COLORS.primary,
     paddingBottom: SPACING.xs,
     paddingTop: SPACING.xs
   }
