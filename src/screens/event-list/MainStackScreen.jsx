@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { StyleSheet } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS, SPACING } from '../../utils/theme'
+import { ProfileScreen } from '../profile/ProfileScreen'
 
 const Tab = createBottomTabNavigator()
 
@@ -33,7 +34,7 @@ export const MainStackScreen = () => {
     <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen name='Home' options={{ title: 'Inicio' }} component={HomeScreen} />
       <Tab.Screen name='Search' options={{ title: 'Explorar' }} component={EventListScreen} />
-      <Tab.Screen name='Profile' options={{ title: 'Perfil' }} component={LoginScreen} />
+      <Tab.Screen name='Profile' options={{ title: 'Perfil' }} component={ProfileScreen} />
     </Tab.Navigator>
   )
 }
