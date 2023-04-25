@@ -6,8 +6,6 @@ import { styles } from './SignUpScreen.styles'
 import { UserContext } from '../../contexts/UserContext'
 import { getUser, storeUser } from '../../api/user.service'
 
-const STORAGE = '@AppEvent'
-
 export const SignUpScreen = () => {
   const navigation = useNavigation()
   const { setCurrentUser } = useContext(UserContext)
@@ -18,7 +16,7 @@ export const SignUpScreen = () => {
     }
   })
   const handleSignUp = ({ username, password }) => {
-    getUser(STORAGE).then(db => {
+    getUser().then(db => {
       if (db == null) {
         // console.log('not db')
         const user = {

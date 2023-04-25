@@ -6,6 +6,7 @@ import { COLORS } from './src/utils/theme'
 import { UserProvider } from './src/contexts/UserContext'
 import { MainStackScreen } from './src/screens/event-list/MainStackScreen'
 import { SignUpScreen } from './src/screens/sign-up/SignUpScreen'
+import { EventDetailWebScreen } from './src/screens/event-detail/EventDetailWebScreen'
 
 const EventListStack = createNativeStackNavigator()
 
@@ -17,6 +18,7 @@ export default function App () {
           <EventListStack.Navigator screenOptions={{ headerShown: false }}>
             <EventListStack.Screen name='Main' component={MainStackScreen} />
             <EventListStack.Screen name='EventDetail' component={EventDetailScreen} />
+            <EventListStack.Screen name='EventDetailWeb' component={EventDetailWebScreen} />
             <EventListStack.Screen name='SignUp' component={SignUpScreen} />
           </EventListStack.Navigator>
         </NavigationContainer>

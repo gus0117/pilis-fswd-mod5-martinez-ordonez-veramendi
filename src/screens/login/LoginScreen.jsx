@@ -7,8 +7,6 @@ import { useNavigation, Link } from '@react-navigation/native'
 import { getUser } from '../../api/user.service'
 import Toast from 'react-native-toast-message'
 
-const STORAGE = '@AppEvent'
-
 export const LoginScreen = () => {
   const navigation = useNavigation()
   const { setCurrentUser } = useContext(UserContext)
@@ -20,7 +18,7 @@ export const LoginScreen = () => {
   })
 
   const handleLogin = ({ username, password }) => {
-    getUser(STORAGE).then(db => {
+    getUser().then(db => {
       if (db != null) {
         // console.log(db)
         const res = db.users.filter(u => u.name === username && u.password === password)

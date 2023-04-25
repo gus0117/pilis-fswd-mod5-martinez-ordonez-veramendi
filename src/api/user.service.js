@@ -10,9 +10,9 @@ export const storeUser = async (value) => {
     console.log('Error storeUser=>' + e)
   }
 }
-export const getUser = async (db) => {
+export const getUser = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem(db)
+    const jsonValue = await AsyncStorage.getItem(STORAGE)
     return jsonValue != null ? JSON.parse(jsonValue) : null
   } catch (e) {
     console.log('Error getUser=>' + e)
