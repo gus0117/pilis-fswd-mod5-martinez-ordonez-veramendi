@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8
   },
   button: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondaty,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
@@ -39,13 +39,12 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   },
-  signUpButton: {
-    backgroundColor: '#0b0026',
+  loginButton: {
+    backgroundColor: '#ab3762',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
     marginTop: 8,
-    alignItems: 'center',
-    textAlign: 'center'
+    alignItems: 'center'
   }
 })

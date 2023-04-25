@@ -1,11 +1,20 @@
-import { api } from './api'
-const SERVICE_ENDPOINT = `${api.server + api.apiVersion}/user`
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export const getUsers = async () => {
+const STORAGE = '@AppEvent'
+
+export const storeUser = async (value) => {
   try {
-    const response = await fetch(SERVICE_ENDPOINT)
-    return response.json()
-  } catch {
-    throw new Error('could not fetch users')
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem(STORAGE, jsonValue)
+  } catch (e) {
+    console.log('Error storeUser=>' + e)
+  }
+}
+export const getUser = async (db) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(db)
+    return jsonValue != null ? JSON.parse(jsonValue) : null
+  } catch (e) {
+    console.log('Error getUser=>' + e)
   }
 }

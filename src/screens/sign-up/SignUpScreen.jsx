@@ -1,15 +1,14 @@
 import React, { useContext } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import { styles } from './LoginScreen.styles'
-import { UserContext } from '../../contexts/UserContext'
 import { useForm, Controller } from 'react-hook-form'
-import { useNavigation, Link } from '@react-navigation/native'
-import { getUser } from '../../api/user.service'
-import Toast from 'react-native-toast-message'
+import { useNavigation } from '@react-navigation/native'
+import { styles } from './SignUpScreen.styles'
+import { UserContext } from '../../contexts/UserContext'
+import { getUser, storeUser } from '../../api/user.service'
 
 const STORAGE = '@AppEvent'
 
-export const LoginScreen = () => {
+export const SignUpScreen = () => {
   const navigation = useNavigation()
   const { setCurrentUser } = useContext(UserContext)
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -18,41 +17,51 @@ export const LoginScreen = () => {
       password: ''
     }
   })
-
-  const handleLogin = ({ username, password }) => {
+  const handleSignUp = ({ username, password }) => {
     getUser(STORAGE).then(db => {
-      if (db != null) {
-        // console.log(db)
-        const res = db.users.filter(u => u.name === username && u.password === password)
-        if (res.length !== 0) {
-          const id = res[0].id
-          const name = res[0].name
-          const events = res[0].events
-          setCurrentUser({ id, name, events })
-          navigation.navigate('Home')
-          // console.log(res[0].name)
-        } else {
-          console.log('not exist user')
-          showToastError()
+      if (db == null) {
+        // console.log('not db')
+        const user = {
+          users: [{
+            id: '@Key-' + username,
+            name: username,
+            password,
+            events: []
+          }]
         }
-        // console.log(res)
+        storeUser(user)
+        const id = user.users[0].id
+        const name = user.users[0].name
+        const events = user.users[0].events
+        setCurrentUser({ id, name, events })
+        navigation.navigate('Home')
       } else {
-        console.log('not exist db')
-        showToastError()
+        // console.log('db')
+        const user = {
+          id: '@Key-' + username,
+          name: username,
+          password,
+          events: []
+        }
+        const newuser = [...db.users, user]
+        db.users = newuser
+        storeUser(db)
+        const id = user.id
+        const name = user.name
+        const events = user.events
+        setCurrentUser({ id, name, events })
+        navigation.navigate('Home')
       }
     }).catch(err => console.warn(err))
   }
-  const showToastError = () => {
-    Toast.show({
-      type: 'error',
-      text1: 'Autenticacion Fallida',
-      text2: 'Verifique su Usuario o Contraseña',
-      position: 'bottom'
-    })
+
+  const handleLogin = () => {
+    navigation.navigate('Profile')
   }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Inicio de Sesión</Text>
+      <Text style={styles.title}>Crear una Cuenta</Text>
       <Controller
         control={control}
         render={({ field: { onChange, onBlur, value } }) => (
@@ -85,13 +94,12 @@ export const LoginScreen = () => {
         rules={{ required: 'La constraseña es requerida' }}
       />
       {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
-      <TouchableOpacity style={styles.button} onPress={handleSubmit(handleLogin)}>
-        <Text style={styles.buttonText}>Entrar</Text>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit(handleSignUp)}>
+        <Text style={styles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
-      <Link style={styles.signUpButton} to={{ screen: 'SignUp' }}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </Link>
-      <Toast />
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Log in</Text>
+      </TouchableOpacity>
     </View>
   )
 }
