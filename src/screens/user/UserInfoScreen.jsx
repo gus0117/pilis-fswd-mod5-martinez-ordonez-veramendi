@@ -4,21 +4,21 @@ import { styles } from './UserInfoScreen.styles'
 import { UserContext } from '../../contexts/UserContext'
 
 export const UserInfoScreen = () => {
-    const { currentUser, setCurrentUser } = useContext(UserContext)
+  const { currentUser, setCurrentUser } = useContext(UserContext)
 
-    const handleLogout = () => {
-        setCurrentUser(null)
-    }
+  const handleLogout = () => {
+    setCurrentUser(null)
+  }
 
-    return(
-        <ScrollView style={styles.container}>
+  return (
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Image
           style={styles.profileImage}
           source={require('../../../assets/images/default-profile.png')}
         />
         <View style={styles.profileInfo}>
-          <Text style={styles.profileName}>{currentUser.username}</Text>
+          <Text style={styles.profileName}>{currentUser.name}</Text>
           <Text style={styles.profileLocation}>Jujuy, Argentina</Text>
         </View>
         <TouchableOpacity style={styles.button} onPress={handleLogout}>
@@ -41,5 +41,5 @@ export const UserInfoScreen = () => {
       </View>
 
     </ScrollView>
-    )
+  )
 }

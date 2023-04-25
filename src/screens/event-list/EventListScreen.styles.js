@@ -1,8 +1,6 @@
 import { Dimensions, StyleSheet, StatusBar } from 'react-native'
 import { COLORS } from '../../utils/theme'
 
-const CARD_HEIGHT = 200
-
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -34,7 +32,7 @@ export const styles = StyleSheet.create({
   itemTitle: {
     fontWeight: 'bold',
     color: '#281e42',
-    marginTop: 10,
+    margin: 5,
     marginHorizontal: 10
   },
   itemDate: {
@@ -46,7 +44,9 @@ export const styles = StyleSheet.create({
   },
   titleBox: {
     position: 'absolute',
-    top: CARD_HEIGHT - 80,
-    left: 16
+    bottom: 20,
+    marginHorizontal: 16,
+    backgroundColor: 'rgba(255, 251, 253, 0.6)',
+    borderRadius: 10
   }
 })

@@ -55,12 +55,20 @@ export const styles = StyleSheet.create({
   },
   webButton: {
     textAlign: 'center',
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.secondaty,
     color: COLORS.white,
     borderRadius: 20,
     paddingHorizontal: 10,
     paddingVertical: 8,
     width: 100,
     marginTop: 10
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20
+  },
+  bookButton: {
+    paddingTop: 15
   }
 })

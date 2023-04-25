@@ -8,21 +8,21 @@ export const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight
   },
   titleContainer: {
-    padding:20,
+    padding: 20,
     opacity: 0.6,
-    position:'absolute',
-    margin:20
+    position: 'absolute',
+    margin: 20
   },
-  carouselContainer:{
-    height: 500,
+  carouselContainer: {
+    height: 500
   },
-  descContainer:{
-    marginTop:-10,
-    padding:20
+  descContainer: {
+    marginTop: -10,
+    padding: 20
   },
-  card:{
-    backgroundColor:'white', 
-    borderRadius:20,
+  card: {
+    backgroundColor: 'white',
+    borderRadius: 20,
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -30,16 +30,16 @@ export const styles = StyleSheet.create({
     shadowRadius: 2,
     marginBottom: 10
   },
-  sub_card:{
-    backgroundColor: 'rgba(250, 245, 255, 1)', 
-    borderRadius:10,
+  sub_card: {
+    backgroundColor: 'rgba(250, 245, 255, 1)',
+    borderRadius: 10,
     elevation: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
     marginBottom: 20,
-    opacity:0.6
+    opacity: 0.6
   },
   title: {
     fontSize: FONT_SIZE.xl,
@@ -54,15 +54,30 @@ export const styles = StyleSheet.create({
     color: COLORS.text,
     width: '100%',
     textAlign: 'center',
-    padding:20
+    padding: 20
   },
   user_title: {
     fontSize: FONT_SIZE.lg,
     fontWeight: 'bold',
     color: COLORS.text,
-    width: '100%',
+    width: '100%'
   },
-  itemList:{
+  itemList: {
     // backgroundColor: 'gray'
-  }  
+  },
+  event_card: {
+    backgroundColor: COLORS.white,
+    borderRadius: 10,
+    elevation: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    marginBottom: 5,
+    opacity: 0.6
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
 })
